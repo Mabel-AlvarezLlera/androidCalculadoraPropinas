@@ -8,5 +8,5 @@
     <string name="normal_15">Okay (15%)</string>
     <string name="redondear_la_propina">Round up trip?</string>
     <string name="calcular">Calculate</string>
-    <string name="propina_resultante">Tip Amount</string>
+    <string name="propina_resultante">Tip Amount: %s</string>
 </resources>

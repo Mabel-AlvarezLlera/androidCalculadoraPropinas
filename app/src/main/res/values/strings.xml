@@ -7,5 +7,5 @@
     <string name="normal_15">Normal (15%)</string>
     <string name="redondear_la_propina">¿Redondear la propina?</string>
     <string name="calcular">Calcular</string>
-    <string name="propina_resultante">Propina resultante</string>
+    <string name="propina_resultante">Propina resultante: %s</string>
 </resources>
