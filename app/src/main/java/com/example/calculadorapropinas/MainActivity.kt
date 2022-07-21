@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun calcularPropina() {
-        val stringCosteDelServicio = binding.costOfService.text.toString() // Hay que hacer toString ya que si no es de tipo Editable
+        val stringCosteDelServicio = binding.costOfServiceEditText.text.toString() // Hay que hacer toString ya que si no es de tipo Editable
 
         val coste = stringCosteDelServicio.toDoubleOrNull() // Para convertir el String a Double
 

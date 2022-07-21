@@ -1,95 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?><!-- El padding es similar a los márgenes, pero agrega espacio interno al ConstraintLayout en lugar de agregar espacio externo -->
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
-    <!-- El id en minúsuculas y separados por _-->
-    <EditText
-        android:id="@+id/cost_of_service"
-        android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        android:autofillHints=""
-        android:hint="@string/coste_del_servicio"
-        android:inputType="numberDecimal"
-        android:minHeight="48dp"
-        android:textColorHint="#757575"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        tools:context=".MainActivity">
 
-    <!-- wrap_content ya que solo necesitamos que la textView sea tan grande como el contenido
-    en ella -->
-    <TextView
-        android:id="@+id/pregunta_servicio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/como_fue_el_servicio"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cost_of_service" />
-
-    <RadioGroup
-        android:id="@+id/opciones_propina"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:checkedButton="@id/opcion_veinte_por_ciento"
-        android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/pregunta_servicio">
-
-        <RadioButton
-            android:id="@+id/opcion_veinte_por_ciento"
+        <ImageView
+            android:id="@+id/icon_cost_of_service"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/genial_20" />
+            android:importantForAccessibility="no"
+            app:layout_constraintBottom_toBottomOf="@id/cost_of_service"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/cost_of_service"
+            app:srcCompat="@drawable/ic_tienda" />
 
-        <RadioButton
-            android:id="@+id/opcion_18_por_ciento"
+        <!-- El id en minúsuculas y separados por _-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/cost_of_service"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:hint="@string/coste_del_servicio"
+            app:layout_constraintStart_toEndOf="@id/icon_cost_of_service"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/cost_of_service_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/icon_service_question"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/bueno_18" />
+            android:importantForAccessibility="no"
+            app:layout_constraintBottom_toBottomOf="@id/pregunta_servicio"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/pregunta_servicio"
+            app:srcCompat="@drawable/ic_servicio" />
 
-        <RadioButton
-            android:id="@+id/opcion_15_por_ciento"
+        <!-- wrap_content ya que solo necesitamos que la textView sea tan grande como el contenido
+        en ella -->
+        <TextView
+            android:id="@+id/pregunta_servicio"
+            style="@style/Widget.Propina.TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/normal_15" />
-    </RadioGroup>
+            android:layout_marginTop="16dp"
+            android:text="@string/como_fue_el_servicio"
+            app:layout_constraintStart_toStartOf="@id/cost_of_service"
+            app:layout_constraintTop_toBottomOf="@id/cost_of_service" />
 
-    <!-- Ponemos 0dp ya que no se puede usar match_parent en constraintLayout
-    Con 0dp hacemos que el ancho sea tanto como la pantalla y con wrap_content en la altura
-    nos adecuamos al tamaño del texto -->
-    <!-- TODO: en un futuro trabajaremos sobre lo remarcado en naranja (SwitchCompat) -->
-    <Switch
-        android:id="@+id/switch_redondear"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:checked="true"
-        android:minHeight="48dp"
-        android:text="@string/redondear_la_propina"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/opciones_propina"
-        app:layout_constraintTop_toBottomOf="@id/opciones_propina" />
+        <RadioGroup
+            android:id="@+id/opciones_propina"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:checkedButton="@id/opcion_veinte_por_ciento"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="@id/pregunta_servicio"
+            app:layout_constraintTop_toTopOf="@id/pregunta_servicio">
 
-    <Button
-        android:id="@+id/boton_calcular"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/calcular"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/switch_redondear" />
+            <RadioButton
+                android:id="@+id/opcion_veinte_por_ciento"
+                style="Widget.Propina.CompoundButton.RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/genial_20" />
 
-    <TextView
-        android:id="@+id/resultado_propina"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/propina_resultante"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/boton_calcular"
-        tools:text="Propina resultante: 10€"/>
+            <RadioButton
+                android:id="@+id/opcion_18_por_ciento"
+                style="Widget.Propina.CompoundButton.RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bueno_18" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <RadioButton
+                android:id="@+id/opcion_15_por_ciento"
+                style="Widget.Propina.CompoundButton.RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/normal_15" />
+        </RadioGroup>
+
+        <ImageView
+            android:id="@+id/icon_round_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:importantForAccessibility="no"
+            app:layout_constraintBottom_toBottomOf="@id/switch_redondear"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/switch_redondear"
+            app:srcCompat="@drawable/ic_redondear" />
+
+        <!-- Ponemos 0dp ya que no se puede usar match_parent en constraintLayout
+        Con 0dp hacemos que el ancho sea tanto como la pantalla y con wrap_content en la altura
+        nos adecuamos al tamaño del texto -->
+        <!-- TODO: en un futuro trabajaremos sobre lo remarcado en naranja (SwitchCompat) -->
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switch_redondear"
+            style="Widget.Propina.CompoundButton.Switch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:checked="true"
+            android:minHeight="48dp"
+            android:text="@string/redondear_la_propina"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/icon_round_up"
+            app:layout_constraintStart_toStartOf="@id/opciones_propina"
+            app:layout_constraintTop_toBottomOf="@id/opciones_propina" />
+
+        <Button
+            android:id="@+id/boton_calcular"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/calcular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/switch_redondear"
+            app:layout_constraintTop_toBottomOf="@id/switch_redondear" />
+
+        <TextView
+            android:id="@+id/resultado_propina"
+            style="@style/Widget.Propina.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/propina_resultante"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/boton_calcular"
+            tools:text="Propina resultante: 10€" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
